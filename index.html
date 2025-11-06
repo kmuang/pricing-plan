@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pricing Plan </title> 
+  <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* small extra for nice card shadow transition */
+    .plan-card { transition: transform .22s ease, box-shadow .22s ease; }
+    .plan-card:hover { transform: translateY(-6px); }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+  <main class="min-h-screen flex items-center justify-center p-6">
+    <section class="w-full max-w-6xl">
+      <header class="mb-8 text-center">
+        <h1 class="text-3xl sm:text-4xl font-extrabold">Choose a plan that fits you</h1>
+        <p class="mt-2 text-slate-600">Simple pricing. No surprise fees. Change or cancel anytime.</p>
+      </header>
+
+      <!-- toggle -->
+      <div class="flex items-center justify-center mb-8 gap-3">
+        <span class="text-sm text-slate-600">Monthly</span>
+        <button id="billingToggle" class="relative inline-flex items-center h-7 w-14 rounded-full bg-slate-300 p-0.5 focus:outline-none" aria-pressed="false" aria-label="Toggle billing">
+          <span class="sr-only">Toggle billing</span>
+          <span class="block h-6 w-6 rounded-full bg-white shadow transition-transform" style="transform: translateX(0)" id="toggleKnob"></span>
+        </button>
+        <span class="text-sm text-slate-600">Annually <span class="text-xs text-green-600 font-medium">(save 20%)</span></span>
+      </div>
+
+      <!-- plans grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Free -->
+        <article class="plan-card bg-white border rounded-2xl p-6 shadow-sm" data-plan="free">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-lg font-semibold">Free</h3>
+              <p class="mt-1 text-sm text-slate-500">For personal projects & exploration</p>
+            </div>
+            <div class="px-3 py-1 text-xs rounded-full bg-slate-100 text-slate-600">Popular</div>
+          </div>
+
+          <div class="mt-6">
+            <div class="text-3xl font-extrabold" id="price-free"><span>$0</span><span class="text-base font-medium">/mo</span></div>
+            <p class="mt-2 text-sm text-slate-500">Includes core features and community support</p>
+          </div>
+
+          <ul class="mt-6 space-y-3 text-sm text-slate-600">
+            <li>✅ 1 Project</li>
+            <li>✅ Basic analytics</li>
+            <li>❌ Advanced integrations</li>
+            <li>❌ Priority support</li>
+          </ul>
+
+          <div class="mt-6">
+            <button class="select-plan w-full inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold shadow-sm hover:bg-slate-50">Get Free</button>
+          </div>
+        </article>
+
+        <!-- Pro -->
+        <article class="plan-card bg-white border rounded-2xl p-6 shadow-sm" data-plan="pro">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-lg font-semibold">Pro</h3>
+              <p class="mt-1 text-sm text-slate-500">For freelancers and small teams</p>
+            </div>
+            <div class="px-3 py-1 text-xs rounded-full bg-amber-100 text-amber-800">Best value</div>
+          </div>
+
+          <div class="mt-6">
+            <div class="text-3xl font-extrabold" id="price-pro"><span>$12</span><span class="text-base font-medium">/mo</span></div>
+            <p class="mt-2 text-sm text-slate-500">Everything you need to ship reliably</p>
+          </div>
+
+          <ul class="mt-6 space-y-3 text-sm text-slate-600">
+            <li>✅ 5 Projects</li>
+            <li>✅ Advanced analytics</li>
+            <li>✅ Integrations (Slack, Zapier)</li>
+            <li>✅ Email support</li>
+          </ul>
+
+          <div class="mt-6">
+            <button class="select-plan w-full inline-flex items-center justify-center gap-2 rounded-xl bg-amber-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-amber-700">Start Pro</button>
+          </div>
+        </article>
+
+        <!-- Best (featured) -->
+        <article class="plan-card relative bg-gradient-to-b from-indigo-600 to-indigo-700 text-white rounded-2xl p-6 shadow-lg transform scale-1.02" data-plan="best">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+            <div class="px-3 py-1 rounded-full bg-white/10 text-xs font-semibold">Most popular</div>
+          </div>
+
+          <div class="mt-4">
+            <h3 class="text-lg font-semibold">Best</h3>
+            <p class="mt-1 text-sm text-indigo-100/80">For growing businesses and teams</p>
+          </div>
+
+          <div class="mt-6">
+            <div class="text-3xl font-extrabold" id="price-best"><span>$29</span><span class="text-base font-medium">/mo</span></div>
+            <p class="mt-2 text-sm text-indigo-100/80">All features, premium support</p>
+          </div>
+
+          <ul class="mt-6 space-y-3 text-sm text-indigo-100/90">
+            <li>✅ Unlimited Projects</li>
+            <li>✅ Team seats & role management</li>
+            <li>✅ SSO & advanced security</li>
+            <li>✅ Priority phone & chat support</li>
+          </ul>
+
+          <div class="mt-6">
+            <button class="select-plan w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white/95 px-4 py-2 text-sm font-semibold text-indigo-700 shadow">Get Best</button>
+          </div>
+        </article>
+
+      </div>
+
+      <footer class="mt-8 text-center text-sm text-slate-500">All prices shown in USD. Taxes and fees may apply.</footer>
+    </section>
+  </main>
+
+  <script>
+    (function(){
+      // Elements
+      const billingToggle = document.getElementById('billingToggle');
+      const toggleKnob = document.getElementById('toggleKnob');
+      let annual = false; // default: monthly
+
+      const prices = {
+        free: {monthly: 0, annual: 0},
+        pro: {monthly: 12, annual: Math.round(12 * 12 * 0.8 / 12)}, // 20% off annual effective monthly
+        best: {monthly: 29, annual: Math.round(29 * 12 * 0.8 / 12)}
+      };
+
+      function updatePrices(){
+        document.getElementById('price-free').innerHTML = `$${prices.free[annual? 'annual':'monthly']}${annual ? '<span class="text-sm font-medium">/mo billed annually</span>' : '<span class="text-base font-medium">/mo</span>'}`;
+        document.getElementById('price-pro').innerHTML = `$${prices.pro[annual? 'annual':'monthly']}${annual ? '<span class="text-sm font-medium">/mo billed annually</span>' : '<span class="text-base font-medium">/mo</span>'}`;
+        document.getElementById('price-best').innerHTML = `$${prices.best[annual? 'annual':'monthly']}${annual ? '<span class="text-sm font-medium">/mo billed annually</span>' : '<span class="text-base font-medium">/mo</span>'}`;
+      }
+
+      billingToggle.addEventListener('click', ()=>{
+        annual = !annual;
+        billingToggle.setAttribute('aria-pressed', String(annual));
+        // move knob
+        toggleKnob.style.transform = annual ? 'translateX(28px)' : 'translateX(0)';
+        updatePrices();
+      });
+
+      // plan selection behaviour (simple)
+      document.querySelectorAll('.select-plan').forEach(btn => {
+        btn.addEventListener('click', (e)=>{
+          const card = e.target.closest('[data-plan]');
+          const plan = card.getAttribute('data-plan');
+          // Example: do something, here we just show an alert — replace with real purchase flow
+          const price = prices[plan][annual ? 'annual' : 'monthly'];
+          const billingNote = annual ? ' (billed annually)' : ' (billed monthly)';
+          if(plan === 'free'){
+            alert('You\'ve selected the Free plan. No payment required.');
+          } else {
+            alert(`You selected **${plan.toUpperCase()}** — $${price}/mo${billingNote}. Proceed to checkout.`);
+          }
+        });
+      });
+
+      // init
+      updatePrices();
+    })();
+  </script>
+</body>
+</html>
